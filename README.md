@@ -23,7 +23,7 @@
 - 🖼️ **Logo Seattle** : [seattle_logo.png](./seattle_logo.png)
 - 📝 **README** : [README.md](./README.md)
 
-> La version HTML permet une lecture plus fluide du notebook directement depuis le dépôt, sans nécessiter l’ouverture de Jupyter Notebook.
+> La version HTML du notebook est fournie pour téléchargement ou consultation locale. GitHub peut ne pas afficher son aperçu directement si le fichier est trop volumineux.
 
 ---
 
