@@ -237,6 +237,8 @@ Plusieurs prolongements pourraient être envisagés :
 
 ---
 
+```md
+
 ## 🗂️ Structure du dépôt
 
 ```text
