@@ -237,11 +237,9 @@ Plusieurs prolongements pourraient être envisagés :
 
 ---
 
-```md
-
 ## 🗂️ Structure du dépôt
 
-```text
+
 prediction-energie-co2-seattle/
 ├── 2016_Building_Energy_Benchmarking.csv
 ├── FAYE_Amadou_Lamine_1_notebooks_032026.ipynb
