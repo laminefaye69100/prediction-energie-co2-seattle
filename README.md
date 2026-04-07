@@ -23,7 +23,7 @@
 - 🖼️ **Logo Seattle** : [seattle_logo.png](./seattle_logo.png)
 - 📝 **README** : [README.md](./README.md)
 
-> Si une version HTML du notebook est ajoutée plus tard, elle pourra être référencée ici pour une lecture plus confortable sur GitHub.
+> La version HTML permet une lecture plus fluide du notebook directement depuis le dépôt, sans nécessiter l’ouverture de Jupyter Notebook.
 
 ---
 
