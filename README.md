@@ -18,6 +18,7 @@
 ## 🚀 Accès rapide
 
 - 📓 **Notebook principal** : [FAYE_Amadou_Lamine_1_notebooks_032026.ipynb](./FAYE_Amadou_Lamine_1_notebooks_032026.ipynb)
+- 🌐 **Notebook en HTML** : [FAYE_Amadou_Lamine_3_notebooks_032026.html](./FAYE_Amadou_Lamine_3_notebooks_032026.html)
 - 📊 **Présentation** : [FAYE_Amadou_Lamine_2_presentation_032026.pptx](./FAYE_Amadou_Lamine_2_presentation_032026.pptx)
 - 🖼️ **Logo Seattle** : [seattle_logo.png](./seattle_logo.png)
 - 📝 **README** : [README.md](./README.md)
@@ -242,12 +243,12 @@ Plusieurs prolongements pourraient être envisagés :
 prediction-energie-co2-seattle/
 ├── 2016_Building_Energy_Benchmarking.csv
 ├── FAYE_Amadou_Lamine_1_notebooks_032026.ipynb
+├── FAYE_Amadou_Lamine_3_notebooks_032026.html
 ├── FAYE_Amadou_Lamine_2_presentation_032026.pptx
 ├── README.md
 ├── seattle_logo.png
 ├── .gitignore
 └── .gitattributes
-```
 
 ---
 
