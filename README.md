@@ -1,70 +1,123 @@
 # 🏙️ Seattle Building Energy & CO₂ Prediction
 
-> Projet réalisé dans le cadre du **Bootcamp - Maitrisez les algorithmes de machine learning** d’**OpenClassrooms**
+<p align="center">
+  <img src="seattle_logo.png" alt="Seattle logo" width="320">
+</p>
 
 <p align="center">
-  <img src="seattle_logo.png" alt="Seattle" width="320">
+  <b>Projet réalisé dans le cadre du Bootcamp - Maitrisez les algorithmes de machine learning</b><br>
+  <b>OpenClassrooms</b>
 </p>
+
+<p align="center">
+  Prédiction de la consommation énergétique et des émissions de CO₂ des bâtiments non résidentiels de Seattle
+</p>
+
+---
+
+## 🚀 Accès rapide
+
+- 📓 **Notebook principal** : [FAYE_Amadou_Lamine_1_notebooks_032026.ipynb](./FAYE_Amadou_Lamine_1_notebooks_032026.ipynb)
+- 📊 **Présentation** : [FAYE_Amadou_Lamine_2_presentation_032026.pptx](./FAYE_Amadou_Lamine_2_presentation_032026.pptx)
+- 🖼️ **Logo Seattle** : [seattle_logo.png](./seattle_logo.png)
+- 📝 **README** : [README.md](./README.md)
+
+> Si une version HTML du notebook est ajoutée plus tard, elle pourra être référencée ici pour une lecture plus confortable sur GitHub.
+
+---
+
+## 📚 Sommaire
+
+- [Contexte](#-contexte)
+- [Problématique](#-problématique)
+- [Objectifs](#-objectifs)
+- [Démarche méthodologique](#-démarche-méthodologique)
+- [Résultats principaux](#-résultats-principaux)
+- [Enseignements clés](#-enseignements-clés)
+- [Variables les plus influentes](#-variables-les-plus-influentes)
+- [Limites](#-limites)
+- [Pistes d’amélioration](#-pistes-damélioration)
+- [Structure du dépôt](#-structure-du-dépôt)
+- [Technologies utilisées](#-technologies-utilisées)
+- [Source des données](#-source-des-données)
+- [Cadre du projet](#-cadre-du-projet)
+- [Conclusion](#-conclusion)
 
 ---
 
 ## ✨ Contexte
 
-Vous travaillez en tant que **Data Scientist pour la ville de Seattle**.  
-Dans le cadre de son objectif de **neutralité carbone à l’horizon 2050**, la ville s’intéresse de près à la consommation énergétique et aux émissions de CO₂ des **bâtiments non résidentiels**.
+Dans ce projet, je me place dans le rôle d’un **Data Scientist travaillant pour la ville de Seattle**.
 
-Des relevés détaillés ont été réalisés en **2016** par les services municipaux. Ces mesures étant coûteuses à obtenir, l’objectif de ce projet est de **prédire** :
+Dans le cadre de son objectif de **neutralité carbone à l’horizon 2050**, la ville s’intéresse à la **consommation énergétique** et aux **émissions de CO₂** des **bâtiments non destinés à l’habitation**.
 
-- la **consommation énergétique totale** des bâtiments : `SiteEnergyUse(kBtu)` ;
-- les **émissions totales de CO₂** : `TotalGHGEmissions`.
+Des relevés détaillés ont été réalisés en **2016** par les services municipaux. Ces mesures étant coûteuses à obtenir, l’objectif est de construire des modèles capables de **prédire** :
 
-Les prédictions reposent uniquement sur des **données structurelles des bâtiments**, comme :
+- la **consommation énergétique totale** : `SiteEnergyUse(kBtu)`
+- les **émissions totales de CO₂** : `TotalGHGEmissions`
+
+à partir des seules **caractéristiques structurelles et fonctionnelles des bâtiments**, comme :
 
 - la taille ;
 - l’usage principal ;
 - l’année de construction ;
 - le nombre d’étages ;
 - la localisation ;
-- et d’autres caractéristiques descriptives.
+- et d’autres variables descriptives.
 
 ---
 
 ## 🎯 Problématique
 
-À partir des relevés déjà disponibles, il s’agit de construire des modèles capables d’estimer la consommation énergétique et les émissions de CO₂ de bâtiments non résidentiels **pour lesquels ces mesures n’ont pas encore été réalisées**.
+À partir des relevés déjà disponibles, il s’agit d’estimer la consommation énergétique et les émissions de CO₂ de bâtiments non résidentiels **pour lesquels ces mesures n’ont pas encore été réalisées**.
 
-Plus précisément, le projet devait permettre de :
+Le projet répond ainsi à trois attentes principales :
 
-- mener une **analyse exploratoire courte mais pertinente** pour faire ressortir les principaux enseignements sur les bâtiments étudiés ;
-- tester **plusieurs modèles supervisés** pour la prédiction de la consommation énergétique et des émissions ;
-- identifier les **facteurs les plus influents** dans les performances des modèles retenus.
+- mener une **analyse exploratoire courte mais pertinente** ;
+- comparer plusieurs **modèles supervisés de régression** ;
+- identifier les **facteurs principaux** qui influencent les performances du ou des modèles retenus.
 
 ---
 
-## 🧠 Démarche suivie
+## 🎯 Objectifs
 
-Le projet a été mené selon une démarche complète de data science.
+Ce projet vise à :
+
+- comprendre la structure des données de benchmarking énergétique de Seattle ;
+- nettoyer le dataset et définir un périmètre d’étude cohérent ;
+- comparer plusieurs familles de modèles de régression ;
+- étudier l’impact de la **transformation logarithmique** des cibles ;
+- tester une approche **multi-output** pour prédire simultanément l’énergie et le CO₂ ;
+- optimiser les meilleurs modèles retenus ;
+- interpréter les résultats et les variables les plus influentes.
+
+---
+
+## 🧠 Démarche méthodologique
+
+Le notebook suit une démarche complète de data science, cohérente avec sa structure générale.
 
 ### 1. Préparation des données
+- chargement et inspection du jeu de données ;
 - sélection du périmètre des bâtiments non résidentiels ;
-- nettoyage des données ;
 - traitement des valeurs incohérentes ;
-- suppression de certaines observations atypiques ;
-- gestion des valeurs manquantes.
+- gestion des valeurs manquantes ;
+- suppression de certaines observations atypiques.
 
 ### 2. Analyse exploratoire
-- distributions des variables cibles ;
-- histogrammes et boxplots ;
-- analyse des asymétries et des outliers ;
+- distributions univariées des deux cibles ;
+- boxplots et histogrammes ;
+- comparaison visuelle de `SiteEnergyUse(kBtu)` et `TotalGHGEmissions` ;
 - étude des corrélations ;
-- visualisations géographiques.
+- analyse spatiale dans Seattle.
 
 ### 3. Feature engineering
-Création et enrichissement de plusieurs variables utiles, notamment :
+Création de variables utiles pour améliorer la modélisation, notamment :
 - `BuildingAge`
 - `GFA_per_floor`
-- variables transformées avec `log1p`
-- variables dérivées liées aux surfaces
+- `LogPropertyGFATotal`
+- `LogLargestPropertyUseTypeGFA`
+- transformations `log1p` sur certaines variables et sur les cibles
 
 ### 4. Modélisation supervisée
 Comparaison de plusieurs modèles :
@@ -79,7 +132,8 @@ Comparaison de plusieurs modèles :
 ### 5. Étude de la transformation logarithmique
 Analyse de l’effet de `log1p` sur :
 - la forme des distributions ;
-- la stabilité des modèles ;
+- la stabilité de l’apprentissage ;
+- la hiérarchie des modèles ;
 - les performances de prédiction.
 
 ### 6. Modélisation multi-output
@@ -88,72 +142,84 @@ Construction d’un modèle unique capable de prédire simultanément :
 - `TotalGHGEmissions`
 
 ### 7. Optimisation et interprétation
-- `GridSearchCV` sur les meilleurs modèles retenus ;
+- `GridSearchCV` de petite taille sur les meilleurs modèles retenus ;
 - `Permutation Importance` pour les modèles non basés sur les arbres ;
 - `feature_importances_` pour les modèles à arbres.
 
 ---
 
-## 📊 Résultats principaux
+## 🏆 Résultats principaux
 
-### 🔋 Meilleur modèle pour `SiteEnergyUse(kBtu)`
+### 🔋 Prédiction de `SiteEnergyUse(kBtu)`
 Le meilleur modèle retenu est :
 
 **`LinearRegression` sur `log1p(SiteEnergyUse(kBtu))`**
 
 Ce résultat montre qu’après réduction de l’asymétrie de la cible, une structure globalement linéaire permet déjà d’obtenir de très bonnes performances.
 
-### 🌍 Meilleur modèle pour `TotalGHGEmissions`
+### 🌍 Prédiction de `TotalGHGEmissions`
 Le meilleur modèle retenu est :
 
 **`ExtraTreesRegressor` optimisé sur la cible brute**
 
-L’optimisation améliore nettement les performances du modèle, ce qui confirme que la prédiction des émissions de CO₂ bénéficie ici d’un modèle flexible capable de capturer des relations non linéaires complexes.
+L’optimisation améliore nettement les performances du modèle, ce qui confirme que la prédiction des émissions de CO₂ bénéficie ici d’un modèle flexible capable de capturer des relations non linéaires plus complexes.
 
-### 🔗 Meilleur modèle multi-output
+### 🔗 Modélisation multi-output
 Le meilleur modèle conjoint retenu est :
 
 **`LinearRegression` sur les deux cibles transformées par `log1p`**
 
-Cette approche permet de prédire simultanément l’énergie et le CO₂ avec un modèle simple, stable et interprétable.
+Cette approche permet de prédire simultanément la consommation énergétique et les émissions de CO₂ avec un modèle simple, stable et interprétable.
 
 ---
 
 ## 📈 Enseignements clés
 
-Les analyses menées mettent en évidence plusieurs constats importants :
+Les principaux enseignements du projet sont les suivants :
 
 - les deux cibles présentent une **forte asymétrie à droite** ;
 - la transformation logarithmique est **très bénéfique** pour la modélisation de `SiteEnergyUse(kBtu)` ;
-- pour `TotalGHGEmissions`, l’effet du logarithme est plus **nuancé** selon le modèle ;
-- la **taille du bâtiment** joue un rôle majeur dans les prédictions ;
-- le **type de bâtiment** est une variable très structurante ;
-- `ENERGYSTARScore` apporte une information prédictive utile.
+- pour `TotalGHGEmissions`, l’effet du logarithme est plus **nuancé** et dépend du modèle considéré ;
+- dans le cadre multi-output, la transformation logarithmique des deux cibles améliore nettement la qualité prédictive globale ;
+- la **taille du bâtiment** constitue un facteur explicatif majeur ;
+- le **type de bâtiment / type de propriété** est très structurant ;
+- `ENERGYSTARScore` apporte également une information utile.
 
 ---
 
-## 📌 Variables importantes
+## 📊 Variables les plus influentes
 
-Les analyses d’importance de variables montrent que les facteurs les plus influents sont principalement liés :
+Les analyses d’importance mettent en évidence le rôle central de variables liées :
 
 - à la **surface totale du bâtiment** ;
 - à la **surface associée à l’usage principal** ;
-- au **type de propriété / type de bâtiment** ;
-- à la **performance énergétique** ;
+- au **type de propriété** (`PrimaryPropertyType`) ;
+- à la **performance énergétique** (`ENERGYSTARScore`) ;
 - et, dans certains cas, à la **localisation**.
 
-Pour les émissions de CO₂, certaines catégories particulières, comme les bâtiments de type **Hospital**, ressortent fortement dans le modèle final.
+Pour `SiteEnergyUse(kBtu)`, la permutation importance montre notamment l’importance de :
+- `LogPropertyGFATotal`
+- `PrimaryPropertyType`
+- `ENERGYSTARScore`
+- `LogLargestPropertyUseTypeGFA`
+
+Pour `TotalGHGEmissions`, les `feature importances` du modèle optimisé mettent aussi en avant certaines catégories particulières, comme les bâtiments de type **Hospital**, ainsi que les variables liées à la taille et à l’usage principal.
+
+Dans le cadre multi-output, la permutation importance confirme à nouveau la domination de :
+- `LogPropertyGFATotal`
+- `PrimaryPropertyType`
+- `ENERGYSTARScore`
 
 ---
 
 ## ⚠️ Limites
 
-Comme tout projet de modélisation, ce travail présente plusieurs limites :
+Ce projet présente plusieurs limites :
 
-- certaines variables comportent un nombre important de valeurs manquantes ;
+- certaines variables, comme `ENERGYSTARScore`, comportent de nombreuses valeurs manquantes ;
 - plusieurs variables explicatives restent corrélées entre elles ;
 - les résultats dépendent du choix de l’échelle de travail ;
-- les importances de variables ne doivent pas être interprétées comme des relations causales ;
+- les mesures d’importance ne doivent pas être interprétées comme des relations causales ;
 - les performances restent conditionnées par les variables disponibles dans le dataset.
 
 ---
@@ -162,21 +228,25 @@ Comme tout projet de modélisation, ce travail présente plusieurs limites :
 
 Plusieurs prolongements pourraient être envisagés :
 
-- approfondir la sélection de variables ;
+- affiner la sélection de variables pour limiter les redondances ;
 - tester des méthodes d’interprétation plus avancées, comme **SHAP** ;
-- explorer d’autres modèles ou approches d’ensemble ;
-- enrichir le dataset avec des variables contextuelles complémentaires ;
-- pousser plus loin l’optimisation en multi-output.
+- approfondir l’optimisation d’autres modèles, notamment en multi-output ;
+- explorer d’autres approches d’ensemble ;
+- enrichir le jeu de données avec des variables contextuelles complémentaires si elles deviennent disponibles.
 
 ---
 
-## 🗂️ Structure du projet
+## 🗂️ Structure du dépôt
 
 ```text
-Prediction_consommation_energetique_et_emissions_CO2_batiments_Seattle_FAYE_Amadou_Lamine/
-├── FAYE_Amadou_Lamine_1_notebooks_032026/
-├── FAYE_Amadou_Lamine_2_presentation_032026/
-└── FAYE_Amadou_Lamine_3_readme_032026/
+prediction-energie-co2-seattle/
+├── 2016_Building_Energy_Benchmarking.csv
+├── FAYE_Amadou_Lamine_1_notebooks_032026.ipynb
+├── FAYE_Amadou_Lamine_2_presentation_032026.pptx
+├── README.md
+├── seattle_logo.png
+├── .gitignore
+└── .gitattributes
 ```
 
 ---
@@ -199,8 +269,10 @@ Prediction_consommation_energetique_et_emissions_CO2_batiments_Seattle_FAYE_Amad
 
 Jeu de données officiel de la ville de Seattle :
 
-**Building Energy Benchmarking Data (2015-Present)**  
-Source : `https://data.seattle.gov/Built-Environment/Building-Energy-Benchmarking-Data-2015-Present/teqw-tu6e/about_data`
+**Building Energy Benchmarking Data (2015-Present)**
+
+Source :  
+https://data.seattle.gov/Built-Environment/Building-Energy-Benchmarking-Data-2015-Present/teqw-tu6e/about_data
 
 ---
 
@@ -214,9 +286,9 @@ Source : `https://data.seattle.gov/Built-Environment/Building-Energy-Benchmarkin
 
 Ce projet a été réalisé dans le cadre du **Bootcamp - Maitrisez les algorithmes de machine learning** proposé par **OpenClassrooms**.
 
-Le travail s’inscrit dans une logique de montée en compétence progressive sur :
+Il s’inscrit dans une logique de progression sur :
 
-- l’analyse exploratoire de données ;
+- l’analyse exploratoire de données réelles ;
 - la modélisation supervisée ;
 - la comparaison méthodique de modèles ;
 - l’interprétation des résultats ;
@@ -232,14 +304,12 @@ Projet académique à visée pédagogique.
 
 ## ✅ Conclusion
 
-Ce projet montre qu’une démarche méthodique permet de construire des modèles **cohérents, performants et interprétables** pour des problématiques environnementales complexes.
+Ce projet montre qu’une démarche méthodique permet de construire des modèles **cohérents, performants et interprétables** pour une problématique environnementale concrète.
 
-Au-delà des scores obtenus, il met surtout en évidence l’importance :
+Le bilan global des modèles retenus est le suivant :
 
-- du prétraitement ;
-- du choix de l’échelle de travail ;
-- de la comparaison rigoureuse entre modèles ;
-- de l’optimisation ciblée ;
-- et de l’interprétation des variables influentes.
+- pour `SiteEnergyUse(kBtu)` : **`LinearRegression` sur `log1p(SiteEnergyUse(kBtu))`**
+- pour `TotalGHGEmissions` : **`ExtraTreesRegressor` optimisé sur la cible brute**
+- pour une approche conjointe : **`LinearRegression` multi-output sur les deux cibles transformées par `log1p`**
 
-Il répond ainsi concrètement à la problématique initiale : **prédire la consommation énergétique et les émissions de CO₂ de bâtiments non résidentiels de Seattle à partir de leurs caractéristiques structurelles**.
+Ainsi, l’objectif initial du projet est atteint : il est possible de prédire de manière satisfaisante la consommation énergétique et les émissions de CO₂ à partir des caractéristiques structurelles et fonctionnelles des bâtiments.
